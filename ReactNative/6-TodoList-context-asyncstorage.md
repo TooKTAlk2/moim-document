@@ -4,7 +4,7 @@
 
 # 6장 TodoList App - Context와  AsyncStorage
 
-# 리액트에서 데이터를 다루는 방법으로 **Prop**s와 **State**, 그리고 **Context**가 존재합니다.
+리액트에서 데이터를 다루는 방법으로 **Prop**s와 **State**, 그리고 **Context**가 존재합니다.
 
 Props와 State, 그리고 Context는 **리액트 네이티브가 동작하는 도중**에 데이터를 다루는 데 사용됩니다. 즉 다시 말하면 앱이 종료되거나 다시 실행되면 Props와 State, Context에 있던 데이터는 사라지게 됩니다. 이처럼 앱을 종료하거나 다시 실행해도 데이터가 사라지지 않게 유지하기 위해 AsyncStorage를 사용하여 데이터를 앱 내에 저장하는 방법에 대해서도 알아봅니다.
 
@@ -14,25 +14,25 @@ Props와 State, 그리고 Context는 **리액트 네이티브가 동작하는 �
 
 리액트에서 Props와 State는 부모 컴포넌트와 자식 컴포넌트 또는 한 컴포넌트 안에서 데이터를 다루기 위해 사용됩니다. 이 Props와 State를 사용하면 부모 컴포넌트에서 자식 컴포넌트, 즉 위에서 아래로 **한쪽 방향**으로만 데이터가 흘러가게 됩니다.
 
-![image-20200721001308430](/Users/neo/Library/Application Support/typora-user-images/image-20200721001308430.png)
+![image-20200721001308430](./img/image-20200721001308430.png)
 
 
 
 만약 다른컴포넌트에서 흐르고 있는 데이터를 사용하고 싶거나 다른 컴포넌트에서 사용하는 데이터를 데이터 흐름에 넣고 싶은 경우가 발생한다면 어떻게 될까요?
 
-![image-20200721001649981](/Users/neo/Library/Application Support/typora-user-images/image-20200721001649981.png)
+![image-20200721001649981](./img/image-20200721001649981.png)
 
 
 
 우리가 생각할 수 있는 방법으로는 데이터는 위에서 아래로, 한쪽 방향으로 흐르게 되므로, 사양하고 싶은 데이터와 이 데이터를 사용할 위치에 **공통 컴포넌트**(Root)에 state를 만들고 사용하고자 하는 데이터를 Props를 전달하여 이 문제를 해결 할 수 있습니다.
 
-![image-20200721001720211](/Users/neo/Library/Application Support/typora-user-images/image-20200721001720211.png)
+![image-20200721001720211](./img/image-20200721001720211.png)
 
 하지만 [그림 6-3]과 같이 컴포넌트 사이에 공유되는 데이터를 위해 매번 공통 부모 컴포넌트를 수정하고 모든 컴포넌트에 Props를 전달하여 데이터를 사용하는 과정은 매우 비효율적입니다. 이런 문제를 해결하기 위해 리액트에선는 Flux라는 개념을 도입하였고 그에 걸맞는  Context API를 제공하기 시작했습니다.
 
 - [Flux에관한자세한내용](https://reactjs.org/blog/2014/05/06/flux.html)
 
-![image-20200721001815937](/Users/neo/Library/Application Support/typora-user-images/image-20200721001815937.png)
+![image-20200721001815937](./img/image-20200721001815937.png)
 
  Context는 부모 컴포넌트로부터 자식 컴포넌트로 전달되는 데이터의 흐름과는 상관없이, 전역적으로 사용되는 데이터를 다룹니다. 전역 데이터를 Context에 저장한 후, 필요한 컴포넌트에서 해당 데이터를 불러와 사용합니다.
 
@@ -44,7 +44,7 @@ Context를 사용하기 위해서 Context API를 사용하여 Context의 Provide
 
 
 
-![image-20200721001841067](/Users/neo/Library/Application Support/typora-user-images/image-20200721001841067.png)
+![image-20200721001841067](./img/image-20200721001841067.png)
 
 
 
@@ -89,15 +89,15 @@ module.exports = {
 
 ```
 
-타입스크립트도 설정합니다. 하지만 3.2.1 과 같은 이유로 사용하지 못합니다.
+타입스크립트도 설정합니다. 
 
 tsconfig.json
 
-![image-20200707224058260](/Users/neo/Desktop/moim/Document/ReactNative/img/image-20200707224058260.png)
+![image-20200707224058260](./img/image-20200707224058260.png)
 
 이렇게 설정한 다음 src 폴더를 생성하고 App.tsx를 src 폴더로 옮깁니다.
 
-![image-20200707224430396](/Users/neo/Desktop/moim/Document/ReactNative/img/image-20200707224430396.png)
+![image-20200707224430396](./img/image-20200707224430396.png)
 
 위 그림처럼 코드를 수정합니다.
 
@@ -107,7 +107,7 @@ tsconfig.json
 
 아래의 내용은 Context API의 사용법을 이해하기 위해 리스트 앱을 세분화하였다.
 
-![image-20200721001915448](/Users/neo/Library/Application Support/typora-user-images/image-20200721001915448.png)
+![image-20200721001915448](./img/image-20200721001915448.png)
 
 
 
@@ -140,7 +140,7 @@ $ react-native link @react-native-community/async-storage
 
 ### 6.4.2 Context
 
- 전역 데이터를 저장할 Context를 생성해 보도록 하자. 우선 Context의 데이터 타입을 정의하기 위해 src/context/todolist/@types/index.d.ts 파일을 생성하고 아래와 같이수정합니다.
+ 전역 데이터를 저장할 Context를 생성해 보도록 하자. 우선 Context의 데이터 타입을 정의하기 위해 src/context/@types/TodoListContext.d.ts 파일을 생성하고 아래와 같이수정합니다.
 
 
 
@@ -458,11 +458,9 @@ export default Todo;
 
 #### 참고 폴더 구조의 결정
 
- 이 관점에서 본다면 제 폴더 구조를 비교하니 작가의 방식이 좋아 보입니다.  하지만 저(정우태)는 리액틀를 다루는 기술에서 마지막으로 사용한 폴더 구조를 사용합니다.
+ 이 관점에서 본다면 제 폴더 구조를 비교하니 작가의 방식이 좋아 보입니다.  하지만 저(정우태)는 리액트를 다루는 기술(저자 김민준)에서 추천주신 components/container/pages/lib 폴더 구조를 사용합니다.
 
-저는 이 예제에서는 간단하게 사용하고,
-
-
+저는 이 예제에서는 간단하게 사용하기위해 모든 컴포넌트들을 src/components 폴더에서 작성하였습니다.
 
  이 작가의 폴더 구조로 작성하는 것은 비효율적입니다. 
 
@@ -948,7 +946,7 @@ export default TextInput;
 npm run ios
 ```
 
-![image-20200726002203812](/Users/neo/Library/Application Support/typora-user-images/image-20200726002203812.png)
+![image-20200729211600171](./img/6-TodoList-completed.png)
 
 
 
@@ -959,13 +957,21 @@ npm run ios
 + 어두운 화면 클릭시 되돌아가기
 + 삭제 기능 
 
+
+
+
+
 ## 6.6 요약
 
-Context를 사용하여 전역관리를 해보았습니다.
+이 장에서 Context를 사용하여 전역관리를 해보았습니다.
 
 Context API가 나온 후에도 많은 개발자들이 Redux와 Mobx와 같은 상태 관리 라이브러리를 사용하고 있습니다.  
 
 마지막으로 AsyncStorage는 로그인 이후, 서버로부터 전달받은 토큰을 저장하거나, 정보를 캐싱하는 데 사용하는 등, 많은 곳에서 활용됩니다. 꼭 기억해두세요.
+
+
+
+이 모든 내용은 스무디 한 잔 마시며 끝내는 React-Native에 있으며 책 내용을 실습하며 저 같은 초보자를 위해 재구성한 다큐먼트입니다.
 
 
 
